@@ -17,13 +17,13 @@ import utils.DBUtil;
  * Servlet implementation class EmployeeShowServlet
  */
 @WebServlet("/employees/show")
-public class EmployeeShowServlet extends HttpServlet {
+public class EmployeesShowServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EmployeeShowServlet() {
+    public EmployeesShowServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,7 +35,7 @@ public class EmployeeShowServlet extends HttpServlet {
         // TODO Auto-generated method stub
         EntityManager em=DBUtil.createEntityManager();
 
-        Employee e=em.find(Employee.class, Integer.parseInt(request.getParameter("id")));
+        Employee e = em.find(Employee.class, Integer.parseInt(request.getParameter("id")));
 
         em.close();
 
