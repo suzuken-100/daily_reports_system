@@ -87,7 +87,7 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("_token", request.getSession().getId());
             request.setAttribute("hasError", true);
             request.setAttribute("code", code);
-
+            //ディスパッチャーはjspに飛ぶ
             RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/login/login.jsp");
             rd.forward(request, response);
         } else {
@@ -95,6 +95,7 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("login_employee", e);
 
             request.getSession().setAttribute("flush", "ログインしました。");
+            //sendRedirectはサーブレットにジャンプ
             response.sendRedirect(request.getContextPath() + "/");
         }
     }
