@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Employee;
-import models.validators.EmployeeValidators;
+import models.validators.EmployeeValidator;
 import utils.DBUtil;
 import utils.EncryptUtil;
 
@@ -58,7 +58,7 @@ public class EmployeesCreateServlet extends HttpServlet {
             e.setUpdate_at(currenTime);
             e.setDelete_flag(0);
 
-            List<String> errors = EmployeeValidators.validate(e, true, true);
+            List<String> errors = EmployeeValidator.validate(e, true, true);
             if(errors.size() > 0) {
                 em.close();
 

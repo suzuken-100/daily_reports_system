@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import models.Employee;
 import utils.DBUtil;
 
-public class EmployeeValidators {
+public class EmployeeValidator {
     public static List<String> validate(Employee e, Boolean codeDuplicateCheckFlag, Boolean passwordCheckFlag) {
         List<String> errors=new ArrayList<String>();
 
