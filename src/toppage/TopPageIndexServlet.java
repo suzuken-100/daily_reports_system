@@ -37,9 +37,9 @@ public class TopPageIndexServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
-        EntityManager em=DBUtil.createEntityManager();
+        EntityManager em = DBUtil.createEntityManager();
 
-        Employee login_employee=(Employee)request.getSession().getAttribute("login_employee");
+        Employee login_employee = (Employee)request.getSession().getAttribute("login_employee");
 
         int page;
         try{
@@ -58,6 +58,10 @@ public class TopPageIndexServlet extends HttpServlet {
                                      .getSingleResult();
 
         em.close();
+
+        request.setAttribute("reports", reports);
+        request.setAttribute("reports_count", reports_count);
+        request.setAttribute("page", page);
 
         if(request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));
