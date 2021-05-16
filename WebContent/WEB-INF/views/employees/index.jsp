@@ -2,8 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="../layout/app.jsp">
     <c:param name="content">
-        <c:if test="${flush != nill}">
-            <div id="flush_succes">
+        <c:if test="${flush != null}">
+            <div id="flush_success">
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
@@ -15,7 +15,7 @@
                     <th>氏名</th>
                     <th>操作</th>
                 </tr>
-                 <c:forEach var="employee" items="${employees}" varStatus="status">
+                <c:forEach var="employee" items="${employees}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td><c:out value="${employee.code}" /></td>
                         <td><c:out value="${employee.name}" /></td>
@@ -29,11 +29,12 @@
                                 </c:otherwise>
                             </c:choose>
                         </td>
-                   </tr>
-                   </c:forEach>
+                    </tr>
+                </c:forEach>
             </tbody>
         </table>
-          <div id="pagination">
+
+        <div id="pagination">
             （全 ${employees_count} 件）<br />
             <c:forEach var="i" begin="1" end="${((employees_count - 1) / 15) + 1}" step="1">
                 <c:choose>
@@ -47,5 +48,6 @@
             </c:forEach>
         </div>
         <p><a href="<c:url value='/employees/new' />">新規従業員の登録</a></p>
+
     </c:param>
 </c:import>
